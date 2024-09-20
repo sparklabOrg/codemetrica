@@ -1,0 +1,20 @@
+{
+  "name": "codemetrica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "Rafed Muhammad Yasir",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/antlr4": "^4.11.6",
+    "antlr4": "4.13.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
