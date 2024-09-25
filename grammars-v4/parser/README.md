@@ -10,4 +10,4 @@ For each target language-
 1. Download the Lexer.g4 & Parser.g4
 2. ~~Preprocess them by running the transformGrammar.py~~
 3. Download the Python3LexerBase.py and Python3ParserBase.py and put them in the same folder
-4. Generate the parsers using ```java -jar antlr-4.13.2-complete.jar *.g4 -Dlanguage=JavaScript``` with options ```-listener``` or ```-visitor```
+4. Generate the parsers using ```java -jar ../antlr-4.13.2-complete.jar *.g4 -Dlanguage=JavaScript``` with options ```-listener``` or ```-visitor```

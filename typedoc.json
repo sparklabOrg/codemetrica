@@ -1,0 +1,43 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "name": "CodeMetrica",
+    // "projectDocuments": ["docs/*"],
+    "entryPoints": [
+        "./codemetrica/index.ts",
+        "./codemetrica/python/index.ts",
+        "./codemetrica/python/smells/index.ts",
+    ],
+    // "entryPointStrategy": "expand",
+    "exclude": [
+        "**/node_modules/**",
+        "**/grammars-v4/**",
+        "**/tests/**",
+        "**/examples/**",
+        // "./*.ts",
+        "./*.json",
+    ],
+    "out": "website",
+    "customFooterHtml": "<p>Copyright <strong>CodeMetrica</strong> 2024</p>",
+    "navigationLinks": {
+        "Docs": "http://example.com",
+        "Example": "http://example.com",
+        "API": "http://example.com",
+        "GitHub": "https://github.com/sparklabOrg/codemetrica"
+    },
+    "sidebarLinks": {
+        "Example": "http://example.com"
+    },
+    "navigation": {
+        // "includeCategories": true,
+        // "includeGroups": true,
+        // "includeFolders": false
+    },
+    // "categorizeByGroup": false,
+    // "disableSources": true,
+    // "excludePrivate": true,
+    // "excludeProtected": true,
+    // "plugin": ["typedoc-plugin-rename-defaults"],
+    // "theme": "hierarchy",
+    // "excludeNotExported": false
+    "readme": "./docs/CodeMetrica.md",
+}
