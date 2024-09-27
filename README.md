@@ -174,3 +174,180 @@ Separation of Concerns: Each class is responsible for a single aspect of the pro
 Factory Pattern: The factory pattern provides an elegant way to choose the correct implementation at runtime, based on the input programming language.
 
 This design allows for flexibility and scalability while keeping the code clean and easy to maintain.   
+
+
+
+Exhibit CCC
+
+Yes, this File class can be improved for readability, maintainability, and separation of concerns. Here are some suggestions for improving its design:
+
+1. Avoid Nesting Visitor Classes Inside Methods
+Nesting visitor classes inside methods can make the class harder to maintain and reuse. A better approach would be to move the ClassVisitor and FunctionVisitor outside of the File class. This separation improves code readability and allows reuse of visitors in other contexts if needed.
+
+typescript
+Copy code
+class ClassVisitor extends PythonParserVisitor<void> {
+    classes: Class[] = [];
+
+    visitClass_def(ctx: Class_defContext) {
+        this.classes.push(new Class(ctx));
+    }
+}
+
+class FunctionVisitor extends PythonParserVisitor<void> {
+    functions: Function[] = [];
+
+    visitFunction_def(ctx: Function_defContext) {
+        this.functions.push(new Function(ctx));
+    }
+}
+2. Separate Concerns
+The File class is currently handling file parsing, class/function extraction, and the visitor pattern implementation. You could break these responsibilities into separate components to follow the single responsibility principle.
+
+File Parsing: A separate class or utility to handle parsing.
+File Class: Should focus on high-level operations (e.g., getting classes and functions).
+Visitors: Extract visitors into their own classes.
+3. Improve Naming and Typing
+Some improvements in naming and typing could make the code more intuitive. For example:
+
+The getClasses() method could be named extractClasses() to indicate that it’s performing an action, not simply retrieving a value.
+Similarly, getFunctions() could be renamed to extractFunctions().
+4. Use a Parser Manager
+Instead of directly calling Parser.getANTLRContext(path) in the constructor, it would be cleaner to have a dedicated parser manager class to handle the parsing. This would decouple the File class from the parser logic.
+
+Example:
+
+typescript
+Copy code
+class ParserManager {
+    static getContext(path: string): File_inputContext {
+        return Parser.getANTLRContext(path);
+    }
+}
+
+export class File extends CodeBlock<File_inputContext> {
+    path: string;
+
+    constructor(path: string) {
+        super(ParserManager.getContext(path));
+        this.path = path;
+    }
+
+    get name() {
+        return this.path.split('/').pop();
+    }
+
+    get extension() {
+        return this.path.includes('.') ? this.path.split('.').pop() : null;
+    }
+
+    extractClasses(): Class[] {
+        const visitor = new ClassVisitor();
+        visitor.visit(this.ctx);
+        return visitor.classes;
+    }
+
+    extractFunctions(): Function[] {
+        const visitor = new FunctionVisitor();
+        visitor.visit(this.ctx);
+        return visitor.functions;
+    }
+}
+5. Handle Errors Gracefully
+If parsing fails (e.g., the file path is invalid or contains syntax errors), it’s good practice to handle this gracefully with error handling:
+
+typescript
+Copy code
+constructor(path: string) {
+    try {
+        const context = ParserManager.getContext(path);
+        super(context);
+        this.path = path;
+    } catch (error) {
+        throw new Error(`Failed to parse file: ${path}. Error: ${error.message}`);
+    }
+}
+6. DRY Principle (Don’t Repeat Yourself)
+You have similar logic for class and function extraction. You could abstract this pattern into a more generic method that accepts a visitor:
+
+typescript
+Copy code
+private visitWith<T>(VisitorClass: new () => { visit: (ctx: File_inputContext) => void }): T[] {
+    const visitor = new VisitorClass();
+    visitor.visit(this.ctx);
+    return visitor as unknown as T[];
+}
+
+extractClasses(): Class[] {
+    return this.visitWith<Class>(ClassVisitor);
+}
+
+extractFunctions(): Function[] {
+    return this.visitWith<Function>(FunctionVisitor);
+}
+7. Encapsulation and Modularity
+To enhance encapsulation, consider making the visitor classes private or at least moving them to their own modules/files. This will keep the class focused on its role and encapsulate complexity within appropriate modules.
+
+Final Version (Refactored):
+typescript
+Copy code
+// ParserManager.ts
+export class ParserManager {
+    static getContext(path: string): File_inputContext {
+        return Parser.getANTLRContext(path);
+    }
+}
+
+// ClassVisitor.ts
+export class ClassVisitor extends PythonParserVisitor<void> {
+    classes: Class[] = [];
+
+    visitClass_def(ctx: Class_defContext) {
+        this.classes.push(new Class(ctx));
+    }
+}
+
+// FunctionVisitor.ts
+export class FunctionVisitor extends PythonParserVisitor<void> {
+    functions: Function[] = [];
+
+    visitFunction_def(ctx: Function_defContext) {
+        this.functions.push(new Function(ctx));
+    }
+}
+
+// File.ts
+export class File extends CodeBlock<File_inputContext> {
+    path: string;
+
+    constructor(path: string) {
+        super(ParserManager.getContext(path));
+        this.path = path;
+    }
+
+    get name(): string | null {
+        return this.path.split('/').pop();
+    }
+
+    get extension(): string | null {
+        return this.path.includes('.') ? this.path.split('.').pop() : null;
+    }
+
+    extractClasses(): Class[] {
+        const visitor = new ClassVisitor();
+        visitor.visit(this.ctx);
+        return visitor.classes;
+    }
+
+    extractFunctions(): Function[] {
+        const visitor = new FunctionVisitor();
+        visitor.visit(this.ctx);
+        return visitor.functions;
+    }
+}
+Key Changes:
+Moved visitor classes outside to separate files.
+Encapsulated parsing logic inside ParserManager.
+Renamed getClasses and getFunctions to extractClasses and extractFunctions for better clarity.
+Added basic error handling in the constructor.
+This design improves modularity, reusability, and maintainability, keeping the File class focused on its main responsibilities.
