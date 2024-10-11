@@ -1,6 +1,7 @@
-import Class from '../codemetrica/py/class';
-import File from '../codemetrica/py/file';
-import ComplexConditional from '../codemetrica/py/smells/complex_conditional';
+import {Class} from '../codemetrica/python/class';
+import {File} from '../codemetrica/python/file';
+import {ComplexConditional} from '../codemetrica/python/smells/complex_conditional';
+import { LongMethod } from '../codemetrica/python/smells/long_method';
 
 
 const file = new File('./test.py')
@@ -11,6 +12,9 @@ classes.forEach((c: Class) => {
     const methods = c.getMethods();
     methods.forEach(m => {
         console.log('\t' + m.name);
+        if(LongMethod.detect(m)) {
+            console.log('\tLong method detected ' + m.name);
+        }
     });
 });
 
