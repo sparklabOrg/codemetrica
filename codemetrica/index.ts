@@ -5,4 +5,4 @@
  * @module codemetrica
  */
 
-export * from "./thresholds";
+export * from "./Thresholds";
