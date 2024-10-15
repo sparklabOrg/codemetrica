@@ -1,14 +1,14 @@
-import { ICodeBlock } from "./interface/ICodeBlock";
-
-import { parsePythonSource } from './language/python/parser';
+import { parsePythonSource } from './language/python/PyParser';
 import { parseJavaSource } from './language/java/parser';
 
 import * as fs from 'fs';
-import { JavaCodeBlock } from './language/java';
-import { PyCodeBlock } from './language/python';
+import { JavaFile } from './language/java';
+import { PyFile } from './language/python';
+
+type CodeFile = PyFile | JavaFile;
 
 export class ParseSource {
-    static fromFile(filePath: string): ICodeBlock {
+    static fromFileSync(filePath: string): CodeFile {
         const extension = filePath.split('.').pop();
 
         if(!extension) {
@@ -16,15 +16,17 @@ export class ParseSource {
         }
 
         const text = fs.readFileSync(filePath, 'utf-8');
-        return ParseSource.fromText(text, extension);
+        const file =  ParseSource.fromText(text, extension);
+        file.filePath = filePath;
+        return file;
     }
 
-    static fromText(text: string, extension: string): JavaCodeBlock | PyCodeBlock {
+    static fromText(text: string, extension: string): CodeFile {
         switch(extension) {
             case 'java':
-                return new JavaCodeBlock(parseJavaSource(text));
+                return new JavaFile(parseJavaSource(text));
             case 'py':
-                return new PyCodeBlock(parsePythonSource(text));
+                return new PyFile(parsePythonSource(text));
             default:
                 throw new Error('Unsupported language');
         }

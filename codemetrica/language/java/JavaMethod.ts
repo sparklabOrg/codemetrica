@@ -1,10 +1,9 @@
 
 import { IMethod } from '../../interface/IMethod';
-import { JavaCodeBlockBase } from "./JavaCodeBlockBase";
+import { JavaCodeBlock } from "./JavaCodeBlock";
 import { MethodDeclarationContext } from "../../../grammars-v4/java/java20/Java20Parser";
-import { IParameter } from '../../interface/IParameter';
-
-export class JavaMethod extends JavaCodeBlockBase<MethodDeclarationContext> implements IMethod {
+import { JavaParameter } from './JavaParameter';
+export class JavaMethod extends JavaCodeBlock<MethodDeclarationContext> implements IMethod {
   constructor(ctx: MethodDeclarationContext) {
     super(ctx);
   }
@@ -14,12 +13,12 @@ export class JavaMethod extends JavaCodeBlockBase<MethodDeclarationContext> impl
   }
 
   getParameters() {
-    const parameters: IParameter[] = [];
+    const parameters: JavaParameter[] = [];
 
-    const paramCtx = this.ctx.MethodDeclaration()?.params()?.parameters()?.children || []
+    const paramCtx = this.ctx?.methodHeader()?.typeParameters()?.children || []
     
     paramCtx.forEach((param: any) => {
-      parameters.push(new Parameter(param.getText(), "lol"));
+      parameters.push(new JavaParameter(param.getText(), "lol"));
     });
 
     return parameters;

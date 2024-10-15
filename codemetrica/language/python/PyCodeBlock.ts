@@ -1,60 +1,104 @@
+import { AtomContext, Simple_stmtContext, Except_blockContext, Except_star_blockContext, ExpressionContext, Match_stmtContext, Star_expressionContext } from "../../../grammars-v4/python/python3_12_1/PythonParser";
 import PythonParserVisitor from "../../../grammars-v4/python/python3_12_1/PythonParserVisitor";
-import { Class_defContext, File_inputContext, Function_defContext } from "../../../grammars-v4/python/python3_12_1/PythonParser.js";
-import { PyCodeBlockBase } from "./PyCodeBlockBase";
-import { PyClass } from "./PyClass";
-import { PyFunction } from "./PyFunction";
+import { ParserRuleContext } from 'antlr4';
+import { Language } from "../../language";
 
-export class PyCodeBlock extends PyCodeBlockBase<File_inputContext> {
-    constructor(ctx: File_inputContext) {
-        super(ctx);
-    }
+export abstract class PyCodeBlock<T extends ParserRuleContext>{
+  ctx: T
+  language: Language
 
-    get fileName() {
-        return this.filePath?.split('/').pop();
-    }
+  constructor(ctx: T) {
+      this.ctx = ctx;  
+      this.language = Language.PYTHON;
+  }
 
-    get extension() {
-        return this.filePath?.includes('.') ? this.filePath.split('.').pop() : null;
-    }
+  getClasses() {
+    throw new Error("Method getClasses() must be implemented");
+  }
 
-    // get LOC() {
-    //     return this.ctx.stop.line - this.ctx.start.line + 1;
-    // }
+  getFunctions() {
+    throw new Error("Method getFunctions() must be implemented");
+  }
 
-    getClasses(): PyClass[] {
-        class ClassVisitor extends PythonParserVisitor<void> {
-            classes: PyClass[];
-            constructor() {
-                super();
-                this.classes = [];
-            }
+  getMethods() {
+    throw new Error("Method getMethods() must be implemented");
+  }
 
-            visitClass_def = (ctx: Class_defContext) => {
-                this.classes.push(new PyClass(ctx)); 
-            }
+  getSimpleStatements(): Simple_stmtContext[]  {
+    const visitor = new (class extends PythonParserVisitor<void> {
+      simpleStatements: Simple_stmtContext[] = [];
+      visitSimple_stmt = (ctx: Simple_stmtContext): void => {
+        this.simpleStatements.push(ctx);
+      };
+    })();
+
+    visitor.visit(this.ctx);
+    return visitor.simpleStatements
+  }
+
+  getExpressions(): ExpressionContext[] {
+    const visitor = new (class extends PythonParserVisitor<void> {
+      expressions: ExpressionContext[] = [];
+      visitExpression = (ctx: ExpressionContext): void => {
+        this.expressions.push(ctx);
+      };
+    })();
+
+    visitor.visit(this.ctx);
+    return visitor.expressions;
+  }
+
+  getMatches() {
+    const visitor = new (class extends PythonParserVisitor<void> {
+      matches: Match_stmtContext[] = [];
+      visitMatch_stmt = (ctx: Match_stmtContext): void => {
+        this.matches.push(ctx);
+      };
+    })();
+
+    visitor.visit(this.ctx);
+    return visitor.matches;
+  }
+
+  getNumberLiterals() {
+    const visitor = new (class extends PythonParserVisitor<void> {
+      numberLiterals: Star_expressionContext[] = [];
+      visitStar_expression = (ctx: Star_expressionContext): void => {
+        if (this.anyTerminalsAreNumber(ctx)) {
+          this.numberLiterals.push(ctx);
         }
+      };
 
-        const visitor = new ClassVisitor();
-        visitor.visit(this.ctx);
-        return visitor.classes;
-    }
-
-    getFunctions() {
-        class FunctionVisitor extends PythonParserVisitor<void> {
-            functions: PyFunction[];
-
-            constructor() {
-                super();
-                this.functions = [];
-            }
-
-            visitFunction_def = (ctx: Function_defContext) => {
-                this.functions.push(new PyFunction(ctx));  
-            }
+      anyTerminalsAreNumber = (ctx: any): boolean => {
+        if (ctx instanceof AtomContext && ctx.NUMBER()) {
+          return true;
         }
+        for (let i = 0; i < ctx.getChildCount(); i++) {
+          if (this.anyTerminalsAreNumber(ctx.getChild(i))) {
+            return true;
+          }
+        }
+        return false;
+      };
+    })();
 
-        const visitor = new FunctionVisitor();
-        visitor.visit(this.ctx);
-        return visitor.functions;
-    }
+    visitor.visit(this.ctx);
+    return visitor.numberLiterals;
+  }
+
+  getExcepts() {
+    const visitor = new (class extends PythonParserVisitor<void> {
+      excepts: (Except_blockContext | Except_star_blockContext)[] = [];
+      visitExcept_block = (ctx: Except_blockContext): void => {
+        this.excepts.push(ctx);
+      };
+
+      visitExcept_star_block = (ctx: Except_star_blockContext): void => {
+        this.excepts.push(ctx);
+      };
+    })();
+
+    visitor.visit(this.ctx);
+    return visitor.excepts;
+  }
 }

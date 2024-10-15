@@ -1,4 +1,4 @@
-import { ICodeBlock } from './ICodeBlock';
+import { ICodeBlock } from './IFile';
 import { IMethod } from './IMethod';
 
 export interface IClass extends ICodeBlock {

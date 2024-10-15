@@ -1,29 +1,39 @@
-import JavaParserVisitor from "../../../grammars-v4/java/java20/Java20ParserVisitor";
-import { JavaClass } from "./JavaClass";
-import { JavaMethod } from "./JavaMethod";
-import { CompilationUnitContext, NormalClassDeclarationContext, MethodDeclarationContext } from "../../../grammars-v4/java/java20/Java20Parser";
-import { JavaCodeBlockBase } from "./JavaCodeBlockBase";
+import { ParserRuleContext } from 'antlr4';
+import { StatementContext } from '../../../grammars-v4/java/java20/Java20Parser';
+import JavaParserVisitor from '../../../grammars-v4/java/java20/Java20ParserVisitor';
+import { Language } from '../../language';
 
-export class JavaCodeBlock extends JavaCodeBlockBase<CompilationUnitContext> {
-    constructor(ctx: CompilationUnitContext) {
-        super(ctx);
-    }
+export abstract class JavaCodeBlock<T extends ParserRuleContext> {
+  ctx: T
+  language: Language
 
-    getClasses(): JavaClass[] {
-        class ClassVisitor extends JavaParserVisitor<void> {
-            classes: JavaClass[];
-            constructor() {
-                super();
-                this.classes = [];
-            }
+  constructor(ctx: T) {
+      this.ctx = ctx;
+      this.language = Language.JAVA;
+  }
 
-            visitNormalClassDeclaration = (ctx: NormalClassDeclarationContext) => {
-                this.classes.push(new JavaClass(ctx)); 
-            }
-        }
+  getClasses() {
+    throw new Error("Method getClasses() must be implemented");
+  }
 
-        const visitor = new ClassVisitor();
-        visitor.visit(this.ctx);
-        return visitor.classes;
-    }
+  getFunctions() {
+    throw new Error("Method getFunctions() must be implemented");
+  }
+
+  getMethods() {
+    throw new Error("Method getMethods() must be implemented");
+  }
+
+  getSimpleStatements(): StatementContext[]  {
+    const visitor = new (class extends JavaParserVisitor<void> {
+      statements: StatementContext[] = [];
+
+      visitStatement = (ctx: StatementContext): void => {
+        this.statements.push(ctx);
+      }
+    })();
+    
+    visitor.visit(this.ctx);
+    return visitor.statements;
+  }
 }

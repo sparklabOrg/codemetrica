@@ -1,10 +1,11 @@
-import { PyCodeBlockBase } from "./PyCodeBlockBase";
+import { PyCodeBlock } from "./PyCodeBlock";
 import { Function_defContext } from "../../../grammars-v4/python/python3_12_1/PythonParser";
 import { IParameter } from "../../interface/IParameter";
 import { IFunction } from "../../interface/IFunction";
+import { IMethod } from "../../interface/IMethod";
 import { PyParameter } from "./PyParameter";
 
-export class PyFunction extends PyCodeBlockBase<Function_defContext> implements IFunction {
+export class PyFunction extends PyCodeBlock<Function_defContext> implements IFunction, IMethod {
   constructor(ctx: Function_defContext) {
     super(ctx);
   }
@@ -14,8 +15,7 @@ export class PyFunction extends PyCodeBlockBase<Function_defContext> implements 
   }
 
   getParameters(): PyParameter[] {
-    const parameters: IParameter[] = [];
-
+    const parameters: PyParameter[] = [];
     const parameters_ctx = this.ctx.function_def_raw()?.params()?.parameters()?.children || []
     
     parameters_ctx.forEach((param: any) => {

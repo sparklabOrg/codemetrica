@@ -1,9 +1,9 @@
-import { JavaCodeBlockBase } from "./JavaCodeBlockBase";
+import { JavaCodeBlock } from "./JavaCodeBlock";
 import { JavaMethod } from "./JavaMethod";
 import { NormalClassDeclarationContext, MethodDeclarationContext } from "../../../grammars-v4/java/java20/Java20Parser";
 import JavaParserVisitor from "../../../grammars-v4/java/java20/Java20ParserVisitor";
 
-export class JavaClass extends JavaCodeBlockBase<NormalClassDeclarationContext> {
+export class JavaClass extends JavaCodeBlock<NormalClassDeclarationContext> {
     constructor(ctx: NormalClassDeclarationContext) {
         super(ctx);
     }
@@ -13,19 +13,13 @@ export class JavaClass extends JavaCodeBlockBase<NormalClassDeclarationContext> 
     }
 
     getMethods(): JavaMethod[] {
-        class MethodVisitor extends JavaParserVisitor<void> {
-            methods: JavaMethod[];
-            constructor() {
-                super();
-                this.methods = [];
+        const visitor = new (class extends JavaParserVisitor<void> {
+            methods: JavaMethod[] = [];
+            visitMethodDeclaration = (ctx: MethodDeclarationContext): void => {
+                this.methods.push(new JavaMethod(ctx));
             }
-
-            visitMethodDeclaration = (ctx: MethodDeclarationContext) => {
-                this.methods.push(new JavaMethod(ctx)); 
-            }
-        }
-
-        const visitor = new MethodVisitor();
+        })();
+        
         visitor.visit(this.ctx);
         return visitor.methods; 
     }
