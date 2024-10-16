@@ -1,5 +1,5 @@
 import { PyCodeBlock } from "./PyCodeBlock";
-import { Function_defContext } from "../../../grammars-v4/python/python3_12_1/PythonParser";
+import { Function_defContext } from "../../../grammars-v4/python/python3_12/PythonParser";
 import { IParameter } from "../../interface/IParameter";
 import { IFunction } from "../../interface/IFunction";
 import { IMethod } from "../../interface/IMethod";

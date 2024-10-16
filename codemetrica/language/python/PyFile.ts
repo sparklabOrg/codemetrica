@@ -1,5 +1,5 @@
-import PythonParserVisitor from "../../../grammars-v4/python/python3_12_1/PythonParserVisitor";
-import { Class_defContext, File_inputContext, Function_defContext } from "../../../grammars-v4/python/python3_12_1/PythonParser.js";
+import PythonParserVisitor from "../../../grammars-v4/python/python3_12/PythonParserVisitor";
+import { Class_defContext, File_inputContext, Function_defContext } from "../../../grammars-v4/python/python3_12/PythonParser.js";
 import { PyCodeBlock } from "./PyCodeBlock";
 import { PyClass } from "./PyClass";
 import { PyFunction } from "./PyFunction";

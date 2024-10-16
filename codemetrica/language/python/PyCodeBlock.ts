@@ -1,9 +1,10 @@
-import { AtomContext, Simple_stmtContext, Except_blockContext, Except_star_blockContext, ExpressionContext, Match_stmtContext, Star_expressionContext } from "../../../grammars-v4/python/python3_12_1/PythonParser";
-import PythonParserVisitor from "../../../grammars-v4/python/python3_12_1/PythonParserVisitor";
+import { AtomContext, Simple_stmtContext, Except_blockContext, Except_star_blockContext, ExpressionContext, Match_stmtContext, Star_expressionContext } from "../../../grammars-v4/python/python3_12/PythonParser";
+import PythonParserVisitor from "../../../grammars-v4/python/python3_12/PythonParserVisitor";
 import { ParserRuleContext } from 'antlr4';
 import { Language } from "../../language";
+import { ICodeBlock } from "../../interface/ICodeBlock";
 
-export abstract class PyCodeBlock<T extends ParserRuleContext>{
+export abstract class PyCodeBlock<T extends ParserRuleContext> implements ICodeBlock{
   ctx: T
   language: Language
 

@@ -1,4 +1,4 @@
-import { ICodeBlock } from './IFile';
+import { ICodeBlock } from './ICodeBlock';
 import { IParameter } from './IParameter';
 
 export interface IFunction extends ICodeBlock{

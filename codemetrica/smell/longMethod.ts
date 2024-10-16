@@ -5,7 +5,7 @@ import { calculateMethodLength as javaCalculateMethodLength } from "../language/
 import { MethodLength as PyMethodLength } from "../language/python/metric/MethodLength";
 import { Thresholds } from "../Thresholds";
 
-type MethodLengthCalculator = (method: IMethod | IFunction) => number;
+type MethodLengthCalculator = (method: any) => number;
 
 export class LongMethod {
     static detect(method: IMethod | IFunction): boolean {
@@ -16,7 +16,7 @@ export class LongMethod {
                 case Language.JAVA:
                     return javaCalculateMethodLength;
                 default:
-                    return () => 0;
+                    throw new Error(`Unsupported language: ${language}`);
             }
         }
 

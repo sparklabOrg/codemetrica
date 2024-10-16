@@ -1,6 +1,6 @@
 import antlr4 from 'antlr4';
-import PythonLexer from '../../../grammars-v4/python/python3_12_1/PythonLexer';
-import PythonParser from '../../../grammars-v4/python/python3_12_1/PythonParser';
+import PythonLexer from '../../../grammars-v4/python/python3_12/PythonLexer';
+import PythonParser from '../../../grammars-v4/python/python3_12/PythonParser';
 
 export function parsePythonSource(sourceCode: string) {
     const inputStream = new antlr4.InputStream(sourceCode) as unknown as antlr4.CharStream;;

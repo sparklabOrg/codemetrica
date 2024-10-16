@@ -1,6 +1,6 @@
-import PythonParserVisitor from "../../../../grammars-v4/python/python3_12_1/PythonParserVisitor";
+import PythonParserVisitor from "../../../../grammars-v4/python/python3_12/PythonParserVisitor";
 import { Thresholds } from '../../../Thresholds';
-import { ExpressionContext } from "../../../../grammars-v4/python/python3_12_1/PythonParser";
+import { ExpressionContext } from "../../../../grammars-v4/python/python3_12/PythonParser";
 
 export class ComplexConditional {
   static detect(ctx: ExpressionContext): boolean {

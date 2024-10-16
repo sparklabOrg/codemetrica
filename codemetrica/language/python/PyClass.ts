@@ -1,7 +1,7 @@
 import { PyCodeBlock } from "./PyCodeBlock";
 import { PyFunction } from "./PyFunction";
-import { Class_defContext, Function_defContext } from "../../../grammars-v4/python/python3_12_1/PythonParser.js";
-import PythonParserVisitor from "../../../grammars-v4/python/python3_12_1/PythonParserVisitor";
+import { Class_defContext, Function_defContext } from "../../../grammars-v4/python/python3_12/PythonParser.js";
+import PythonParserVisitor from "../../../grammars-v4/python/python3_12/PythonParserVisitor";
 import { IClass } from "../../interface/IClass";
 
 export class PyClass extends PyCodeBlock<Class_defContext> implements IClass {
