@@ -1,15 +1,15 @@
 import { ParserRuleContext } from 'antlr4';
 import { StatementContext } from '../../../grammars-v4/java/java20/Java20Parser';
 import JavaParserVisitor from '../../../grammars-v4/java/java20/Java20ParserVisitor';
-import { Language } from '../../language';
+import { LanguageEnum } from '../../LanguageEnum';
 
 export abstract class JavaCodeBlock<T extends ParserRuleContext> {
   ctx: T
-  language: Language
+  language: LanguageEnum
 
   constructor(ctx: T) {
       this.ctx = ctx;
-      this.language = Language.JAVA;
+      this.language = LanguageEnum.JAVA;
   }
 
   getClasses() {

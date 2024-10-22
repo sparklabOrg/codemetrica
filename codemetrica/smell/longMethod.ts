@@ -1,7 +1,7 @@
 import { IMethod } from "../interface/IMethod";
 import { IFunction } from "../interface/IFunction";
-import { Language } from "../language";
-import { calculateMethodLength as javaCalculateMethodLength } from "../language/java/metric/MethodLength";
+import { LanguageEnum } from "../LanguageEnum";
+import { MethodLength as JavaMethodLength } from "../language/java/metric/MethodLength";
 import { MethodLength as PyMethodLength } from "../language/python/metric/MethodLength";
 import { Thresholds } from "../Thresholds";
 
@@ -9,12 +9,12 @@ type MethodLengthCalculator = (method: any) => number;
 
 export class LongMethod {
     static detect(method: IMethod | IFunction): boolean {
-        const getMethodLengthCalculator = (language: Language): MethodLengthCalculator => {
+        const getMethodLengthCalculator = (language: LanguageEnum): MethodLengthCalculator => {
             switch (language) {
-                case Language.PYTHON:
+                case LanguageEnum.PYTHON:
                     return PyMethodLength.calculate;
-                case Language.JAVA:
-                    return javaCalculateMethodLength;
+                case LanguageEnum.JAVA:
+                    return JavaMethodLength.calculate;
                 default:
                     throw new Error(`Unsupported language: ${language}`);
             }

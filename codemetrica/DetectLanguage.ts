@@ -1,22 +1,22 @@
-import { Language } from "./language";
+import { LanguageEnum } from "./LanguageEnum";
 import vscodeLangDetection from '@vscode/vscode-languagedetection';
 const { ModelOperations } = vscodeLangDetection;
 
 export class DetectLanguage {
-    private static extensionToLanguageMap = new Map<string, Language>([
-        ['c', Language.C],
-        ['cpp', Language.CPP],
-        ['cs', Language.CSharp],
-        ['go', Language.GO],
-        ['java', Language.JAVA],
-        ['js', Language.JAVASCRIPT],
-        ['php', Language.PHP],
-        ['py', Language.PYTHON],
-        ['rb', Language.RUBY],
-        ['ts', Language.TYPESCRIPT]
+    private static extensionToLanguageMap = new Map<string, LanguageEnum>([
+        ['c', LanguageEnum.C],
+        ['cpp', LanguageEnum.CPP],
+        ['cs', LanguageEnum.CSharp],
+        ['go', LanguageEnum.GO],
+        ['java', LanguageEnum.JAVA],
+        ['js', LanguageEnum.JAVASCRIPT],
+        ['php', LanguageEnum.PHP],
+        ['py', LanguageEnum.PYTHON],
+        ['rb', LanguageEnum.RUBY],
+        ['ts', LanguageEnum.TYPESCRIPT]
     ]);
 
-    static fromExtension(extension: string): Language {
+    static fromExtension(extension: string): LanguageEnum {
         const language = this.extensionToLanguageMap.get(extension.toLowerCase());
         if (!language) {
             throw new Error(`Unsupported language extension: ${extension}`);
@@ -24,7 +24,7 @@ export class DetectLanguage {
         return language;
     }
 
-    static async fromSourceCode(sourceCode: string): Promise<Language> {
+    static async fromSourceCode(sourceCode: string): Promise<LanguageEnum> {
         const modelOperations = new ModelOperations();
         
         try {
@@ -42,12 +42,12 @@ export class DetectLanguage {
         }
     }
 
-    static fromAntlrContext(ctx: any): Language {
+    static fromAntlrContext(ctx: any): LanguageEnum {
         const constructor_name = ctx.constructor.name.toLowerCase();
         if (constructor_name.includes('python')) {
-            return Language.PYTHON;
+            return LanguageEnum.PYTHON;
         } else if (constructor_name.includes('java')) {
-            return Language.JAVA;
+            return LanguageEnum.JAVA;
         }
 
         throw new Error(`Unsupported language: ${constructor_name}`);

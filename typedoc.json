@@ -4,8 +4,9 @@
     // "projectDocuments": ["docs/*"],
     "entryPoints": [
         "./codemetrica/index.ts",
-        "./codemetrica/python/index.ts",
-        "./codemetrica/python/smells/index.ts",
+        "./codemetrica/language/python/index.ts",
+        "./codemetrica/language/java/index.ts",
+        "./codemetrica/smell/index.ts",
     ],
     // "entryPointStrategy": "expand",
     "exclude": [

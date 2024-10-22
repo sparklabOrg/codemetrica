@@ -1,6 +1,6 @@
-import { Language } from "../language";
+import { LanguageEnum } from "../LanguageEnum";
 
 export interface ICodeBlock {
     ctx: any;
-    language: Language
+    language: LanguageEnum
 }

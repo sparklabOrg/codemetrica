@@ -1,16 +1,16 @@
 import { AtomContext, Simple_stmtContext, Except_blockContext, Except_star_blockContext, ExpressionContext, Match_stmtContext, Star_expressionContext } from "../../../grammars-v4/python/python3_12/PythonParser";
 import PythonParserVisitor from "../../../grammars-v4/python/python3_12/PythonParserVisitor";
 import { ParserRuleContext } from 'antlr4';
-import { Language } from "../../language";
+import { LanguageEnum } from "../../LanguageEnum";
 import { ICodeBlock } from "../../interface/ICodeBlock";
 
 export abstract class PyCodeBlock<T extends ParserRuleContext> implements ICodeBlock{
   ctx: T
-  language: Language
+  language: LanguageEnum
 
   constructor(ctx: T) {
       this.ctx = ctx;  
-      this.language = Language.PYTHON;
+      this.language = LanguageEnum.PYTHON;
   }
 
   getClasses() {
