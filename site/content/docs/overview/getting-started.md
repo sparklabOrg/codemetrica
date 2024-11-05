@@ -4,33 +4,44 @@ date: 2024-02-17
 weight: 10
 ---
 
-## Quick Start from Template
+## Class based api
 
-{{% steps %}}
+```ts
+import { ParseSource } from "../codemetrica/ParseSource";
+import { CyclomaticComplexity } from "../codemetrica/metrics"
+import { GodClass } from "../codemetrica/smells"
 
-### Initialize a new site
+const pyFile = ParseSource.fromFileSync("test.py");
 
-[Click to copy the template on GitHub](https://github.com/new?template_name=theme-documentation&template_owner=HugoBlox)
+for (const cls of pyFile.getClasses()) {
+    console.log(c.name);
+    if(GodClass.detect(cls)){
+      console.log(cls.name + " is a god class.")
+    }
 
-### Configure your new site
+    for(const m of cls.getMethods()) {
+        console.log(m.name + ": " + CyclomaticComplexity.calculate(m));
+    }
+}
+```
 
-[Configure your site name, description, and menu.](https://docs.hugoblox.com/tutorial/blog/)
+## Functional API
 
-### Add your content
+```ts
+import { ParseSource } from "../codemetrica/ParseSource";
+import { detectCyclomaticComplexity } from "../codemetrica/metrics"
+import { detectGodClass } from "../codemetrica/smells"
 
-[Edit the homepage and add your documentation pages.](https://docs.hugoblox.com/tutorial/blog/)
+const pyFile = ParseSource.fromFileSync("test.py");
 
-### Publish your site
+for (const cls of pyFile.getClasses()) {
+    console.log(c.name);
+    if(detectGodClass(cls)){
+      console.log(cls.name + " is a god class.")
+    }
 
-[Easily publish your site for free with GitHub Pages](https://docs.hugoblox.com/tutorial/blog/)
-
-{{% /steps %}}
-
-## Next
-
-Let's customize your new site:
-
-{{< cards >}}
-  {{< card url="../guide/project-structure" title="Project Structure" icon="document-duplicate" >}}
-  {{< card url="../guide/configuration" title="Configuration" icon="adjustments-vertical" >}}
-{{< /cards >}}
+    for(const m of cls.getMethods()) {
+        console.log(m.name + ": " + calculateCyclomaticComplexity(m));
+    }
+}
+```

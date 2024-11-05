@@ -75,3 +75,4 @@ website/
 
 ## hugo static/api for typedoc outputs
 site/static/api/
+site/hugo_stats.json
