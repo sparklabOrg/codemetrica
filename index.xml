@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home | Hugo Docs</title><link>https://example.com/</link><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml"/><description>Home</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><image><url>https://example.com/media/icon_hu5930497643254308004.png</url><title>Home</title><link>https://example.com/</link></image><item><title>Getting Started</title><link>https://example.com/docs/overview/getting-started/</link><pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate><guid>https://example.com/docs/overview/getting-started/</guid><description>&lt;h2 id="quick-start-from-template">Quick Start from Template&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home | Codemetrica</title><link>https://sparklaborg.github.io/codemetrica/</link><atom:link href="https://sparklaborg.github.io/codemetrica/index.xml" rel="self" type="application/rss+xml"/><description>Home</description><generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate><image><url>https://sparklaborg.github.io/codemetrica/media/icon_hu5930497643254308004.png</url><title>Home</title><link>https://sparklaborg.github.io/codemetrica/</link></image><item><title>Getting Started</title><link>https://sparklaborg.github.io/codemetrica/docs/overview/getting-started/</link><pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/overview/getting-started/</guid><description>&lt;h2 id="quick-start-from-template">Quick Start from Template&lt;/h2>
 &lt;div class="hb-steps">
 &lt;h3 id="initialize-a-new-site">Initialize a new site&lt;/h3>
 &lt;p>
@@ -24,7 +24,7 @@ class="hb-card group"href="../guide/project-structure" >
 class="hb-card group"href="../guide/configuration" >
 &lt;span class="hb-card-title p-4">
 &lt;svg style="height: 1em; width: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">&lt;path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"/>&lt;/svg>Configuration&lt;/span>&lt;/a>
-&lt;/div></description></item><item><title>Code Smell</title><link>https://example.com/knowledge-hub/code-smell/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/knowledge-hub/code-smell/</guid><description>&lt;h2 id="coming-soon">Coming soon!&lt;/h2></description></item><item><title>Metrics</title><link>https://example.com/docs/supported-features/metrics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/supported-features/metrics/</guid><description>&lt;h2 id="size-metrics">Size Metrics&lt;/h2>
+&lt;/div></description></item><item><title>Code Smell</title><link>https://sparklaborg.github.io/codemetrica/knowledge-hub/code-smell/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/knowledge-hub/code-smell/</guid><description>&lt;h2 id="coming-soon">Coming soon!&lt;/h2></description></item><item><title>Metrics</title><link>https://sparklaborg.github.io/codemetrica/docs/supported-features/metrics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/supported-features/metrics/</guid><description>&lt;h2 id="size-metrics">Size Metrics&lt;/h2>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -447,7 +447,7 @@ class="hb-card group"href="../guide/configuration" >
 &lt;td style="text-align: center">-&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Code Smells</title><link>https://example.com/docs/supported-features/code-smells/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/supported-features/code-smells/</guid><description>&lt;h2 id="general-smells">General Smells&lt;/h2>
+&lt;/table></description></item><item><title>Code Smells</title><link>https://sparklaborg.github.io/codemetrica/docs/supported-features/code-smells/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/supported-features/code-smells/</guid><description>&lt;h2 id="general-smells">General Smells&lt;/h2>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -923,13 +923,13 @@ class="hb-card group"href="../guide/configuration" >
 &lt;td style="text-align: center">-&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>External resources</title><link>https://example.com/knowledge-hub/external-resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/knowledge-hub/external-resources/</guid><description>&lt;h2 id="code-smells">Code Smells&lt;/h2>
+&lt;/table></description></item><item><title>External resources</title><link>https://sparklaborg.github.io/codemetrica/knowledge-hub/external-resources/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/knowledge-hub/external-resources/</guid><description>&lt;h2 id="code-smells">Code Smells&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;/li>
 &lt;li>
 &lt;/li>
-&lt;/ul></description></item><item><title>Installing Codemetrica</title><link>https://example.com/docs/overview/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/overview/install/</guid><description>&lt;h2 id="folder-structure">Folder Structure&lt;/h2>
+&lt;/ul></description></item><item><title>Installing Codemetrica</title><link>https://sparklaborg.github.io/codemetrica/docs/overview/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/overview/install/</guid><description>&lt;h2 id="folder-structure">Folder Structure&lt;/h2>
 &lt;p>There are &lt;strong>4 main folders for Hugo-based sites&lt;/strong>:&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>content/&lt;/code> for your Markdown-formatted content files (homepage, etc.)
@@ -977,7 +977,7 @@ class="hb-card group"href="../guide/configuration" >
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">My Test&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">weight&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nn">---&lt;/span>&lt;span class="w">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Test Smells</title><link>https://example.com/docs/supported-features/test-smells/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/supported-features/test-smells/</guid><description>&lt;h2 id="coming-soon">Coming soon!&lt;/h2></description></item><item><title>Energy Smells</title><link>https://example.com/docs/supported-features/energy-smells/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/supported-features/energy-smells/</guid><description>&lt;h2 id="coming-soon">Coming soon!&lt;/h2></description></item><item><title>Nvidia</title><link>https://example.com/showcase/nvidia/</link><pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate><guid>https://example.com/showcase/nvidia/</guid><description/></item><item><title>v2.0.0 Released!</title><link>https://example.com/blog/v2.0.0/</link><pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate><guid>https://example.com/blog/v2.0.0/</guid><description>&lt;p>Hugo v2.0.0 is now available! This release includes new experimental features to try out, improvements to accessibility, the ability for plugins to customize image optimization in Markdown, and many more improvements and bug fixes.&lt;/p>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Test Smells</title><link>https://sparklaborg.github.io/codemetrica/docs/supported-features/test-smells/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/supported-features/test-smells/</guid><description>&lt;h2 id="coming-soon">Coming soon!&lt;/h2></description></item><item><title>Energy Smells</title><link>https://sparklaborg.github.io/codemetrica/docs/supported-features/energy-smells/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/supported-features/energy-smells/</guid><description>&lt;h2 id="coming-soon">Coming soon!&lt;/h2></description></item><item><title>Nvidia</title><link>https://sparklaborg.github.io/codemetrica/showcase/nvidia/</link><pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/showcase/nvidia/</guid><description/></item><item><title>v2.0.0 Released!</title><link>https://sparklaborg.github.io/codemetrica/blog/v2.0.0/</link><pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/blog/v2.0.0/</guid><description>&lt;p>Hugo v2.0.0 is now available! This release includes new experimental features to try out, improvements to accessibility, the ability for plugins to customize image optimization in Markdown, and many more improvements and bug fixes.&lt;/p>
 &lt;p>Highlights include:&lt;/p>
 &lt;ul>
 &lt;li>New config options&lt;/li>
@@ -992,7 +992,7 @@ class="hb-card group"href="../guide/configuration" >
 &lt;h2 id="how-to-upgrade">How to Upgrade&lt;/h2>
 &lt;p>Simply run the following command in your terminal:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo mod get -u github.com/HugoBlox/hugo-blox-builder/modules/blox-tailwind@main
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae fringilla sem. Integer mattis dictum augue non auctor. Proin quis porttitor enim. Praesent vulputate arcu egestas scelerisque condimentum. Vivamus elit risus, suscipit et enim et, viverra molestie elit. Nulla ullamcorper nisl vel nisi pellentesque, id feugiat risus interdum. Duis consequat ipsum elit. Aenean hendrerit diam ipsum, a convallis magna congue et. Sed ex erat, pretium et ante id, malesuada luctus nibh. Nunc nec consectetur elit.&lt;/p></description></item><item><title>v1.0.0 Released!</title><link>https://example.com/blog/v1.0.0/</link><pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><guid>https://example.com/blog/v1.0.0/</guid><description>&lt;p>Hugo v1.0.0 is now available! This release includes new experimental features to try out, improvements to accessibility, the ability for plugins to customize image optimization in Markdown, and many more improvements and bug fixes.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae fringilla sem. Integer mattis dictum augue non auctor. Proin quis porttitor enim. Praesent vulputate arcu egestas scelerisque condimentum. Vivamus elit risus, suscipit et enim et, viverra molestie elit. Nulla ullamcorper nisl vel nisi pellentesque, id feugiat risus interdum. Duis consequat ipsum elit. Aenean hendrerit diam ipsum, a convallis magna congue et. Sed ex erat, pretium et ante id, malesuada luctus nibh. Nunc nec consectetur elit.&lt;/p></description></item><item><title>v1.0.0 Released!</title><link>https://sparklaborg.github.io/codemetrica/blog/v1.0.0/</link><pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/blog/v1.0.0/</guid><description>&lt;p>Hugo v1.0.0 is now available! This release includes new experimental features to try out, improvements to accessibility, the ability for plugins to customize image optimization in Markdown, and many more improvements and bug fixes.&lt;/p>
 &lt;p>Highlights include:&lt;/p>
 &lt;ul>
 &lt;li>New config options&lt;/li>
@@ -1007,7 +1007,7 @@ class="hb-card group"href="../guide/configuration" >
 &lt;h2 id="how-to-upgrade">How to Upgrade&lt;/h2>
 &lt;p>Simply run the following command in your terminal:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">hugo mod get -u github.com/HugoBlox/hugo-blox-builder/modules/blox-tailwind@main
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae fringilla sem. Integer mattis dictum augue non auctor. Proin quis porttitor enim. Praesent vulputate arcu egestas scelerisque condimentum. Vivamus elit risus, suscipit et enim et, viverra molestie elit. Nulla ullamcorper nisl vel nisi pellentesque, id feugiat risus interdum. Duis consequat ipsum elit. Aenean hendrerit diam ipsum, a convallis magna congue et. Sed ex erat, pretium et ante id, malesuada luctus nibh. Nunc nec consectetur elit.&lt;/p></description></item><item><title>Callout Shortcode</title><link>https://example.com/docs/overview/examples/callout/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/overview/examples/callout/</guid><description>&lt;p>Hugo Blox supports a Markdown extension for callouts, also referred to as alerts or asides.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae fringilla sem. Integer mattis dictum augue non auctor. Proin quis porttitor enim. Praesent vulputate arcu egestas scelerisque condimentum. Vivamus elit risus, suscipit et enim et, viverra molestie elit. Nulla ullamcorper nisl vel nisi pellentesque, id feugiat risus interdum. Duis consequat ipsum elit. Aenean hendrerit diam ipsum, a convallis magna congue et. Sed ex erat, pretium et ante id, malesuada luctus nibh. Nunc nec consectetur elit.&lt;/p></description></item><item><title>Callout Shortcode</title><link>https://sparklaborg.github.io/codemetrica/docs/overview/examples/callout/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/overview/examples/callout/</guid><description>&lt;p>Hugo Blox supports a Markdown extension for callouts, also referred to as alerts or asides.&lt;/p>
 &lt;p>Callouts are a useful feature to draw attention to important or related content such as notes, hints, or warnings in your articles.&lt;/p>
 &lt;h2 id="usage">Usage&lt;/h2>
 &lt;h3 id="notes">Notes&lt;/h3>
@@ -1030,7 +1030,7 @@ class="hb-card group"href="../guide/configuration" >
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">{{% callout warning %}}
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Here&amp;#39;s some important information...
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{% /callout %}}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Cards Shortcode</title><link>https://example.com/docs/overview/examples/cards/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/overview/examples/cards/</guid><description>&lt;p>A Hugo extension to create cards. Cards can be shown as links or as plain text.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Cards Shortcode</title><link>https://sparklaborg.github.io/codemetrica/docs/overview/examples/cards/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/overview/examples/cards/</guid><description>&lt;p>A Hugo extension to create cards. Cards can be shown as links or as plain text.&lt;/p>
 &lt;h2 id="usage">Usage&lt;/h2>
 &lt;div class="hb-cards mt-4 grid gap-4 not-prose" style="--hb-cols: 1;">
 &lt;a
@@ -1073,7 +1073,7 @@ class="hb-card group">
 &lt;td style="text-align: left">URL&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Community</title><link>https://example.com/community/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/community/</guid><description>&lt;h2 id="support">Support&lt;/h2>
+&lt;/table></description></item><item><title>Community</title><link>https://sparklaborg.github.io/codemetrica/community/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/community/</guid><description>&lt;h2 id="support">Support&lt;/h2>
 &lt;p>Get support fast. Hugo Blox has the largest Hugo community on Discord, consisting of thousands of creators, developers, and startups.&lt;/p>
 &lt;h2 id="docs">Docs&lt;/h2>
 &lt;ul>
@@ -1106,7 +1106,7 @@ class="hb-card group">
 &lt;ul>
 &lt;li>
 for help installing Hugo and resolving Hugo error messages&lt;/li>
-&lt;/ul></description></item><item><title>Spoiler</title><link>https://example.com/docs/overview/examples/toggle/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/overview/examples/toggle/</guid><description>&lt;p>A Hugo shortcode to toggle collapsible content.&lt;/p>
+&lt;/ul></description></item><item><title>Spoiler</title><link>https://sparklaborg.github.io/codemetrica/docs/overview/examples/toggle/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/overview/examples/toggle/</guid><description>&lt;p>A Hugo shortcode to toggle collapsible content.&lt;/p>
 &lt;h2 id="example">Example&lt;/h2>
 &lt;details class="spoiler " id="spoiler-0">
 &lt;summary class="cursor-pointer">Click to view the spoiler&lt;/summary>
@@ -1123,7 +1123,7 @@ for help installing Hugo and resolving Hugo error messages&lt;/li>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Markdown is **supported**.
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{&amp;lt; /spoiler &amp;gt;}}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Steps Shortcode</title><link>https://example.com/docs/overview/examples/steps/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/overview/examples/steps/</guid><description>&lt;p>Display a series of steps, such as for a tutorial.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Steps Shortcode</title><link>https://sparklaborg.github.io/codemetrica/docs/overview/examples/steps/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sparklaborg.github.io/codemetrica/docs/overview/examples/steps/</guid><description>&lt;p>Display a series of steps, such as for a tutorial.&lt;/p>
 &lt;h2 id="example">Example&lt;/h2>
 &lt;div class="hb-steps">
 &lt;h3 id="step-1">Step 1&lt;/h3>
