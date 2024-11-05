@@ -2,6 +2,10 @@
 
 CodeMetrica is a work-in-progress framework designed to perform static analysis for multiple programming languages. It focuses on calculating various source code metrics and detecting code smells, providing a generalized approach to analyzing and improving code quality across different languages.
 
+> [!CAUTION]
+>
+> The project is under active development, expect things to break every once in a while.
+
 ## Features
 
 * Multi-language support: CodeMetrica is built to support multiple programming languages, with specific support for Java and Python currently in place.

@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "cd example && npx tsx index.ts",
     "build": "tsc",
-    "docs": "rm -rf website/* & npx typedoc"
+    "docs": "rm -rf site/static/api && npx typedoc && hugo"
   },
   "keywords": [],
   "type": "module",

@@ -1,6 +1,6 @@
 {
     "$schema": "https://typedoc.org/schema.json",
-    "name": "CodeMetrica",
+    "name": "Codemetrica",
     // "projectDocuments": ["docs/*"],
     "entryPoints": [
         "./codemetrica/index.ts",
@@ -17,16 +17,15 @@
         // "./*.ts",
         "./*.json",
     ],
-    "out": "website",
-    "customFooterHtml": "<p>Copyright <strong>CodeMetrica</strong> 2024</p>",
+    "out": "site/static/api/",
+    "customFooterHtml": "<p>© <strong>CodeMetrica</strong> 2024</p>",
     "navigationLinks": {
-        "Docs": "http://example.com",
-        "Example": "http://example.com",
-        "API": "http://example.com",
+        "Docs": "/docs/",
+        "Example": "/docs/overview/examples/",
         "GitHub": "https://github.com/sparklabOrg/codemetrica"
     },
     "sidebarLinks": {
-        "Example": "http://example.com"
+        "Back to docs": "/docs/",
     },
     "navigation": {
         // "includeCategories": true,
@@ -40,5 +39,5 @@
     // "plugin": ["typedoc-plugin-rename-defaults"],
     // "theme": "hierarchy",
     // "excludeNotExported": false
-    "readme": "./docs/CodeMetrica.md",
+    "readme": "./site/typedoc.md",
 }
