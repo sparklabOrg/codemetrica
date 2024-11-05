@@ -31,7 +31,7 @@ jobs:
 
     - name: Build Hugo site
       run: |
-        hugo --minify
+        cd site && hugo --minify
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
