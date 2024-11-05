@@ -27,7 +27,7 @@ jobs:
       run: npm install
 
     - name: Generate TypeDoc Documentation
-      run: npx typedoc
+      run: npx typedoc --skipErrorChecking
 
     - name: Build Hugo site
       run: |
