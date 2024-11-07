@@ -1,23 +1,30 @@
 {
   "name": "codemetrica",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "test": "jest",
     "dev": "cd example && npx tsx index.ts",
-    "build": "tsc",
-    "docs": "rm -rf site/static/api && npx typedoc && hugo"
+    "docs": "rm -rf site/static/api && npx typedoc && hugo",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "rm -rf dist/* && npm run build:esm && npm run build:cjs"
   },
   "keywords": [],
   "type": "module",
   "author": "Rafed Muhammad Yasir",
-  "license": "Apache-2.0",
+  "license": "GPL-3.0",
   "dependencies": {
     "@types/antlr4": "^4.11.6",
     "@vscode/vscode-languagedetection": "^1.0.22",
     "antlr4": "4.13.2",
-    "typedoc-plugin-rename-defaults": "^0.7.1",
     "typescript-collections": "^1.3.3"
   },
   "devDependencies": {
