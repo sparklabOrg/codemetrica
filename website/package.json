@@ -1,0 +1,16 @@
+{
+  "name": "vitepress-docs",
+  "private": true,
+  "scripts": {
+    "dev": "npm run typedoc && vitepress dev",
+    "build": "npm run typedoc && vitepress build",
+    "serve": "vitepress serve",
+    "typedoc": "typedoc"
+  },
+  "dependencies": {
+    "vitepress": "^1.0.0"
+  },
+  "devDependencies": {
+    "typedoc": "^0.27.9"
+  }
+}
