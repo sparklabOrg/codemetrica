@@ -1,7 +1,10 @@
 {
   "entryPoints": ["../src/index.ts"],
   "tsconfig": "../tsconfig.json",
-  "out": "public/api",
+  "plugin": ["typedoc-plugin-markdown"],
+  "out": "api",
+  "entryFileName": "index.md",
+  "hidePageTitle": true,
   "readme": "none",
   "excludePrivate": true,
   "excludeInternal": true,

@@ -13,7 +13,7 @@
     "clean": "rimraf dist",
     "dev": "tsx examples/main.ts",
     "docs:install": "npm install --prefix website",
-    "docs:dev": "npm --prefix website run start",
+    "docs:dev": "npm --prefix website run dev",
     "docs:build": "npm --prefix website run build",
     "docs:serve": "npm --prefix website run serve",
     "docs:typedoc": "npm --prefix website run typedoc",

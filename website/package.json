@@ -5,12 +5,13 @@
     "dev": "npm run typedoc && vitepress dev",
     "build": "npm run typedoc && vitepress build",
     "serve": "vitepress serve",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc --options typedoc.json"
   },
   "dependencies": {
     "vitepress": "^1.0.0"
   },
   "devDependencies": {
-    "typedoc": "^0.27.9"
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-markdown": "^4.11.0"
   }
 }

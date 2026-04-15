@@ -1,0 +1,40 @@
+.api-docs .VPDoc.has-sidebar .content-container {
+  max-width: 840px;
+}
+
+.api-docs .vp-doc h1 {
+  font-size: 2rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+
+.api-docs .vp-doc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 1.4rem;
+  padding-top: 0.85rem;
+  font-size: 1.2rem;
+}
+
+.api-docs .vp-doc h3 {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 0.25rem 0.45rem;
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  width: fit-content;
+}
+
+.api-docs .vp-doc p,
+.api-docs .vp-doc li {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.api-docs .VPSidebarItem.level-1 .text {
+  font-weight: 600;
+}
+
+.api-docs .VPSidebarItem.level-2 .text {
+  font-size: 0.9rem;
+}
