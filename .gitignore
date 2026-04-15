@@ -169,6 +169,7 @@ coverage/
 *.tsbuildinfo
 
 # vitepress
-.vitepress/dist
-.vitepress/cache
+.vitepress/dist/
+.vitepress/cache/
 website/api
+website/public
