@@ -40,6 +40,7 @@ export abstract class BaseSource extends NodeProcessor {
 
   abstract getClasses(): BaseClass[];
   abstract getFunctions(): BaseFunction[];
+  abstract getImports(): string[];
 
   getMethods(): BaseFunction[] {
     return this.getClasses().flatMap((classObj) => classObj.getMethods());

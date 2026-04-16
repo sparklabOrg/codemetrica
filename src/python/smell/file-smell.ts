@@ -1,39 +1,15 @@
 import { PythonSource } from "../entities/source.js";
 import { PythonFunction } from "../entities/function.js";
 import { FileMetric } from "../metric/file-metric.js";
+import { BaseFileSmell } from "../../smells/file-smell.js";
 
-export class FileSmell {
-  private readonly metric: FileMetric;
+export class FileSmell extends BaseFileSmell {
+  private readonly pythonMetric: FileMetric;
 
-  constructor(private readonly sourceObj: PythonSource) {
-    this.metric = new FileMetric(sourceObj);
-  }
-
-  isLargeFile(): boolean {
-    return this.metric.getLoc() > 1000 || this.metric.getNoc() > 5 || this.metric.getNom() > 50;
-  }
-
-  isDuplicateFile(): boolean {
-    const normalizedLines = this.sourceObj
-      .getLines()
-      .map((line) => line.trim())
-      .filter((line) => line.length > 20);
-
-    if (normalizedLines.length < 20) {
-      return false;
-    }
-
-    const seen = new Set<string>();
-    let duplicates = 0;
-    for (const line of normalizedLines) {
-      if (seen.has(line)) {
-        duplicates += 1;
-      } else {
-        seen.add(line);
-      }
-    }
-
-    return duplicates / normalizedLines.length > 0.2;
+  constructor(sourceObj: PythonSource) {
+    const metric = new FileMetric(sourceObj);
+    super(sourceObj, metric);
+    this.pythonMetric = metric;
   }
 
   isFeatureEnvyFile(): boolean {
@@ -49,7 +25,7 @@ export class FileSmell {
   }
 
   isShotgunSurgeryFile(): boolean {
-    return this.metric.getNofm() > 12 && this.metric.getNom() > 20;
+    return this.pythonMetric.getNofm() > 12 && this.metric.getNom() > 20;
   }
 
   isDivergentChangeFile(): boolean {

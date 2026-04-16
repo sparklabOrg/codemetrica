@@ -1,53 +1,39 @@
 import { PythonFunction } from "../entities/function.js";
 import { MethodMetric } from "../metric/method-metric.js";
+import { BaseMethodSmell } from "../../smells/method-smell.js";
 
-export class MethodSmell {
-  private readonly metric: MethodMetric;
+export class MethodSmell extends BaseMethodSmell {
+  private readonly pythonMetric: MethodMetric;
+  private readonly pythonMethodObj: PythonFunction;
 
-  constructor(private readonly methodObj: PythonFunction) {
-    this.metric = new MethodMetric(methodObj);
+  constructor(methodObj: PythonFunction) {
+    const metric = new MethodMetric(methodObj);
+    super(methodObj, metric);
+    this.pythonMetric = metric;
+    this.pythonMethodObj = methodObj;
   }
 
   isLongMethod(): boolean {
-    return this.metric.getLoc() > 50 || this.metric.getCc() > 10;
+    return this.pythonMetric.getLoc() > 50 || this.pythonMetric.getCc() > 10;
   }
 
   isComplexMethod(): boolean {
-    return this.metric.getCc() > 15 || this.metric.getNbd() > 4 || this.metric.getNpath() > 200;
+    return this.pythonMetric.getCc() > 15 || this.pythonMetric.getNbd() > 4 || this.pythonMetric.getNpath() > 200;
   }
 
   isLongParameterList(): boolean {
-    return this.metric.getParameters() > 5;
+    return this.pythonMetric.getParameters() > 5;
   }
 
   isBrainMethod(): boolean {
     return (
-      this.metric.getCc() > 20 ||
-      this.metric.getNbd() > 5 ||
-      this.metric.getHalsteadBigN1() > 50 ||
-      this.metric.getHalsteadBigN2() > 50 ||
-      this.metric.getDecisionDensity() > 0.6 ||
-      this.metric.getHalsteadEffort() > 5000
+      this.pythonMetric.getCc() > 20 ||
+      this.pythonMetric.getNbd() > 5 ||
+      this.pythonMetric.getHalsteadBigN1() > 50 ||
+      this.pythonMetric.getHalsteadBigN2() > 50 ||
+      this.pythonMetric.getDecisionDensity() > 0.6 ||
+      this.pythonMetric.getHalsteadEffort() > 5000
     );
-  }
-
-  isDuplicateCode(): boolean {
-    const statements = this.methodObj
-      .getStatements()
-      .map((statement) => statement.trim())
-      .filter((statement) => statement.length > 0);
-
-    if (statements.length < 6) {
-      return false;
-    }
-
-    const frequencies = new Map<string, number>();
-    for (const statement of statements) {
-      frequencies.set(statement, (frequencies.get(statement) ?? 0) + 1);
-    }
-
-    const duplicatedStatements = Array.from(frequencies.values()).filter((count) => count > 1).length;
-    return duplicatedStatements / statements.length > 0.25;
   }
 
   isMessageChain(): boolean {
@@ -62,7 +48,7 @@ export class MethodSmell {
       return node.children.some((child) => hasNestedAttribute(child as never));
     };
 
-    return hasNestedAttribute(this.methodObj["_node"] as never);
+    return hasNestedAttribute(this.pythonMethodObj["_node"] as never);
   }
 
   isSwitchStatement(): boolean {
@@ -74,7 +60,7 @@ export class MethodSmell {
       return node.children.some((child) => hasSwitch(child as never));
     };
 
-    return hasSwitch(this.methodObj["_node"] as never);
+    return hasSwitch(this.pythonMethodObj["_node"] as never);
   }
 
   getSmells(): Record<string, boolean> {

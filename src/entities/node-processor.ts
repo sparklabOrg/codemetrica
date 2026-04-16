@@ -1,5 +1,5 @@
 import type { TSNode } from "../types.js";
-import { nodeText } from "../utils/query.js";
+import { nodeText } from "../language/query.js";
 
 export abstract class NodeProcessor {
   protected abstract get node(): TSNode;

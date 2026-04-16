@@ -1,6 +1,6 @@
 import Python from "tree-sitter-python";
 import type { TSNode } from "../types.js";
-import { captureNodes, nodeText, runQuery } from "../utils/query.js";
+import { captureNodes, nodeText, runQuery } from "../language/query.js";
 import type { LanguageAdapter } from "../language/adapter.js";
 
 export class PythonLanguageAdapter implements LanguageAdapter {
@@ -101,5 +101,135 @@ export class PythonLanguageAdapter implements LanguageAdapter {
 
     const calls = captureNodes(captures, "call").map((callNode) => nodeText(callNode, sourceCode));
     return Array.from(new Set(calls));
+  }
+
+  getFieldNodes(classNode: TSNode): TSNode[] {
+    const fields = new Map<string, TSNode>();
+    const body = classNode.childForFieldName("body");
+    if (!body) {
+      return [];
+    }
+
+    for (const child of body.namedChildren) {
+      if (child.type !== "function_definition") {
+        continue;
+      }
+
+      const nameNode = child.childForFieldName("name");
+      if (nameNode?.text !== "__init__") {
+        continue;
+      }
+
+      const walk = (node: TSNode): void => {
+        if (node.type === "assignment") {
+          const left = node.childForFieldName("left");
+          if (left?.type === "attribute") {
+            const obj = left.childForFieldName("object");
+            const attr = left.childForFieldName("attribute");
+            if (obj?.text === "self" && attr && !fields.has(attr.text ?? "")) {
+              fields.set(attr.text ?? "", attr);
+            }
+          }
+        }
+
+        for (const grandchild of node.children) {
+          walk(grandchild);
+        }
+      };
+
+      walk(child);
+    }
+
+    return Array.from(fields.values());
+  }
+
+  getSuperclassNodes(classNode: TSNode): TSNode[] {
+    const superclassesNode = classNode.childForFieldName("superclasses");
+    if (!superclassesNode) {
+      return [];
+    }
+
+    return superclassesNode.namedChildren.filter(
+      (child) => child.type === "identifier" || child.type === "attribute"
+    );
+  }
+
+  getDecoratorNodes(node: TSNode): TSNode[] {
+    const parent = node.parent;
+    if (!parent || parent.type !== "decorated_definition") {
+      return [];
+    }
+
+    return parent.children.filter((child) => child.type === "decorator");
+  }
+
+  getImportNodes(rootNode: TSNode): TSNode[] {
+    const captures = runQuery(
+      this.language,
+      rootNode,
+      `
+      (import_statement) @import
+      (import_from_statement) @import
+    `
+    );
+
+    return captureNodes(captures, "import");
+  }
+
+  getDocstringNode(node: TSNode): TSNode | null {
+    const body = node.childForFieldName("body");
+    if (!body) {
+      return null;
+    }
+
+    const first = body.namedChildren[0];
+    if (!first || first.type !== "expression_statement") {
+      return null;
+    }
+
+    const expr = first.namedChildren[0];
+    if (!expr || expr.type !== "string") {
+      return null;
+    }
+
+    return expr;
+  }
+
+  getReturnTypeNode(functionNode: TSNode): TSNode | null {
+    return functionNode.childForFieldName("return_type");
+  }
+
+  getLocalVariableNodes(functionNode: TSNode): TSNode[] {
+    const captures = runQuery(
+      this.language,
+      functionNode,
+      `
+      (function_definition
+        body: (block
+          (expression_statement
+            (assignment left: (identifier) @var)
+          )
+        )
+      )
+    `
+    );
+
+    return captureNodes(captures, "var");
+  }
+
+  getNestedFunctionNodes(functionNode: TSNode): TSNode[] {
+    const captures = runQuery(
+      this.language,
+      functionNode,
+      `
+      (function_definition
+        body: (block
+          (function_definition) @nested
+        )
+      )
+    `
+    );
+
+    return captureNodes(captures, "nested");
   }
 }

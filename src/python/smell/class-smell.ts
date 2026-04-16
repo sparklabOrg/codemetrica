@@ -2,20 +2,23 @@ import { PythonClass } from "../entities/class.js";
 import { PythonFunction } from "../entities/function.js";
 import { ClassMetric } from "../metric/class-metric.js";
 import { MethodMetric } from "../metric/method-metric.js";
+import { BaseClassSmell } from "../../smells/class-smell.js";
 
-export class ClassSmell {
-  private readonly metric: ClassMetric;
+export class ClassSmell extends BaseClassSmell {
+  private readonly pythonMetric: ClassMetric;
 
-  constructor(private readonly classObj: PythonClass) {
-    this.metric = new ClassMetric(classObj);
+  constructor(classObj: PythonClass) {
+    const metric = new ClassMetric(classObj);
+    super(classObj, metric);
+    this.pythonMetric = metric;
   }
 
   isGodClass(): boolean {
     return (
       this.metric.getNom() > 20 ||
       this.classObj.getLines().length > 1000 ||
-      this.metric.getCbo() > 10 ||
-      this.metric.getLcom() > 0.8
+      this.pythonMetric.getCbo() > 10 ||
+      this.pythonMetric.getLcom() > 0.8
     );
   }
 
@@ -29,16 +32,8 @@ export class ClassSmell {
     return methods.length <= 5 && !hasComplexBehavior;
   }
 
-  isLargeClass(): boolean {
-    return this.classObj.getLines().length > 300 || this.metric.getNom() > 15;
-  }
-
   isComplexClass(): boolean {
-    return this.metric.getWmc() > 40 || this.metric.getAverageCc() > 7;
-  }
-
-  isLazyClass(): boolean {
-    return this.metric.getNom() <= 1 && this.classObj.getLines().length < 40;
+    return this.pythonMetric.getWmc() > 40 || this.pythonMetric.getAverageCc() > 7;
   }
 
   isBrainClass(): boolean {
@@ -67,7 +62,7 @@ export class ClassSmell {
   }
 
   isShotgunSurgery(): boolean {
-    return this.metric.getRfc() > 30 && this.metric.getCbo() > 3;
+    return this.pythonMetric.getRfc() > 30 && this.pythonMetric.getCbo() > 3;
   }
 
   getSmells(): Record<string, boolean> {

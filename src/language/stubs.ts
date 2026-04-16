@@ -35,6 +35,38 @@ abstract class UnsupportedLanguageAdapter implements LanguageAdapter {
   getRemoteCallNames(_functionNode: TSNode, _sourceCode: string): string[] {
     return [];
   }
+
+  getFieldNodes(_classNode: TSNode): TSNode[] {
+    return [];
+  }
+
+  getSuperclassNodes(_classNode: TSNode): TSNode[] {
+    return [];
+  }
+
+  getDecoratorNodes(_node: TSNode): TSNode[] {
+    return [];
+  }
+
+  getImportNodes(_rootNode: TSNode): TSNode[] {
+    return [];
+  }
+
+  getDocstringNode(_node: TSNode): TSNode | null {
+    return null;
+  }
+
+  getReturnTypeNode(_functionNode: TSNode): TSNode | null {
+    return null;
+  }
+
+  getLocalVariableNodes(_functionNode: TSNode): TSNode[] {
+    return [];
+  }
+
+  getNestedFunctionNodes(_functionNode: TSNode): TSNode[] {
+    return [];
+  }
 }
 
 export class JavaLanguageAdapter extends UnsupportedLanguageAdapter {
