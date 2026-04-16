@@ -29,6 +29,18 @@ export class ClassSmell {
     return methods.length <= 5 && !hasComplexBehavior;
   }
 
+  isLargeClass(): boolean {
+    return this.classObj.getLines().length > 300 || this.metric.getNom() > 15;
+  }
+
+  isComplexClass(): boolean {
+    return this.metric.getWmc() > 40 || this.metric.getAverageCc() > 7;
+  }
+
+  isLazyClass(): boolean {
+    return this.metric.getNom() <= 1 && this.classObj.getLines().length < 40;
+  }
+
   isBrainClass(): boolean {
     const totalCc = this.classObj
       .getMethods()
@@ -39,17 +51,32 @@ export class ClassSmell {
   }
 
   isFeatureEnvy(): boolean {
-    return false;
+    const methods = this.classObj.getMethods();
+    if (methods.length === 0) {
+      return false;
+    }
+
+    const localMethodNames = new Set(methods.map((method) => method.getName()));
+
+    const foreignCallCount = methods
+      .flatMap((method) => (method as PythonFunction).getRemoteCalls())
+      .filter((callName) => !localMethodNames.has(callName) && !callName.startsWith("_"))
+      .length;
+
+    return foreignCallCount / methods.length > 3;
   }
 
   isShotgunSurgery(): boolean {
-    return false;
+    return this.metric.getRfc() > 30 && this.metric.getCbo() > 3;
   }
 
   getSmells(): Record<string, boolean> {
     return {
       god_class: this.isGodClass(),
       data_class: this.isDataClass(),
+      large_class: this.isLargeClass(),
+      complex_class: this.isComplexClass(),
+      lazy_class: this.isLazyClass(),
       brain_class: this.isBrainClass(),
       feature_envy: this.isFeatureEnvy(),
       shotgun_surgery: this.isShotgunSurgery()

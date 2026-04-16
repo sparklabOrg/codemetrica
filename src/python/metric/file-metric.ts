@@ -1,31 +1,13 @@
 import type { TSNode } from "../../types.js";
 import { PythonSource } from "../entities/source.js";
+import { BaseFileMetric } from "../../metrics/file-metric.js";
 
-export class FileMetric {
+export class FileMetric extends BaseFileMetric {
   private readonly node: TSNode;
 
-  constructor(private readonly sourceObj: PythonSource) {
+  constructor(sourceObj: PythonSource) {
+    super(sourceObj);
     this.node = sourceObj.tree.rootNode;
-  }
-
-  getLoc(): number {
-    return this.sourceObj.getLines().length;
-  }
-
-  getSloc(): number {
-    return this.sourceObj.getLines().filter((line) => line.trim()).length;
-  }
-
-  getCloc(): number {
-    return this.sourceObj.getLines().filter((line) => line.trim().startsWith("#")).length;
-  }
-
-  getNoc(): number {
-    return this.sourceObj.getClasses().length;
-  }
-
-  getNom(): number {
-    return this.sourceObj.getMethods().length;
   }
 
   getNof(): number {

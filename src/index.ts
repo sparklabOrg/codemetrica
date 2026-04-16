@@ -6,6 +6,10 @@ export { BaseSource } from "./entities/source.js";
 export { BaseClass } from "./entities/class.js";
 export { BaseFunction } from "./entities/function.js";
 
+export { BaseFileMetric } from "./metrics/file-metric.js";
+export { BaseClassMetric } from "./metrics/class-metric.js";
+export { BaseMethodMetric } from "./metrics/method-metric.js";
+
 export { PythonSource } from "./python/entities/source.js";
 export { PythonClass } from "./python/entities/class.js";
 export { PythonFunction } from "./python/entities/function.js";
